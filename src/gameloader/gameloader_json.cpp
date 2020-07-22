@@ -5,8 +5,9 @@
 namespace raycaster {
   namespace gameloader {
     namespace JSON {
-      datamodel::GameState load_game_state_from_json(std::string_view content) {
+      datamodel::GameLevel load_game_level_from_json(std::string_view content) {
         auto j = nlohmann::json::parse(content);
+        
       }
     }
   }
