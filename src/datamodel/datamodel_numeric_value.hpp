@@ -9,34 +9,35 @@ namespace raycaster {
   namespace datamodel {
 
     template <class C>
-    struct numeric_value {
+    class numeric_value {
+    public:
       double value;
-      inline numeric_value(double v) :value(v) {}
-      inline numeric_value(const C& v) :value(v.value) {}
-      inline void operator=(const C& v) { value = v; }
+      numeric_value(double v) :value(v) {}
+      numeric_value(const C& v) :value(v.value) {}
+      void operator=(const C& v) { value = v; }
       
-      inline numeric_value operator + (C v) { return numeric_value( value + v.value); }
-      inline numeric_value operator - (C v) { return numeric_value( value - v.value); }
+      numeric_value operator + (C v) { return numeric_value( value + v.value); }
+      numeric_value operator - (C v) { return numeric_value( value - v.value); }
       
-      inline void operator += (C v) { value += v.value; }
-      inline void operator -= (C v) { value -= v.value; }
+      void operator += (C v) { value += v.value; }
+      void operator -= (C v) { value -= v.value; }
       
-      inline C operator ++ () { return ++value; }
-      inline C operator -- () { return --value;}
-      inline C operator ++ (int v) { return value++; }
-      inline C operator -- (int v) { return value--; }
+      C operator ++ () { return ++value; }
+      C operator -- () { return --value;}
+      C operator ++ (int v) { return value++; }
+      C operator -- (int v) { return value--; }
       
       // avoid rounding errors when comparing
-      inline bool operator == (C v) {
+      bool operator == (C v) {
         return
           std::fabs(value - v.value) <= std::numeric_limits<double>::epsilon() * std::fabs(value + v.value) * std::numeric_limits<double>::round_error
           || std::fabs(value - v.value) < std::numeric_limits<double>::min();
       }
-      inline bool operator != (C v) { return !(this == v); }
-      inline bool operator > (C v) { return value > v.value; }
-      inline bool operator < (C v) { return value < v.value; }
-      inline bool operator >= (C v) { return value >= v.value; }
-      inline bool operator <= (C v) { return value <= v.value; }        
+      bool operator != (C v) { return !(this == v); }
+      bool operator > (C v) { return value > v.value; }
+      bool operator < (C v) { return value < v.value; }
+      bool operator >= (C v) { return value >= v.value; }
+      bool operator <= (C v) { return value <= v.value; }        
     };
 
   }
