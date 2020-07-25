@@ -19,9 +19,9 @@ namespace raycaster {
     
     // given start and end positions, return the position where it
     // would be stopped by a wall or an enemy, or nothing
-    raycast_return raycast(datamodel::commontypes::position2d start,
-                           datamodel::commontypes::position2d end,
-                           datamodel::GameState);
+    raycast_return raycast(const datamodel::commontypes::position2d& start,
+                           const datamodel::commontypes::position2d& end,
+                           const datamodel::GameState& state);
   }
 }
 
