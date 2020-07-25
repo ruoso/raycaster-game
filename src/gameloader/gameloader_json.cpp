@@ -50,11 +50,18 @@ namespace raycaster {
         }
         double health = j_health_it->get<double>();
 
+        auto j_radius_it = j.find("radius");
+        if (j_radius_it == j.end() || !j_radius_it->is_number_float()) {
+          throw InvalidJsonException("not a float in actor radius");
+        }
+        double radius = j_radius_it->get<double>();
+
         return datamodel::Actor({ type,
                                   datamodel::commontypes::position2d(pos_x, pos_y),
                                   datamodel::commontypes::speed2d(vel_x, vel_y),
                                   angle,
-                                  health });
+                                  health,
+                                  radius });
       }
       
       datamodel::GameLevel load_game_level_from_json(std::string_view content) {

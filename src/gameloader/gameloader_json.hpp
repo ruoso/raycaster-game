@@ -15,18 +15,20 @@ namespace raycaster {
        {
          "player": {
            "type": "identifier",
-           "pos": [ 0, 0 ],
-           "vel": [ 0, 0 ],
-           "angle": 0,
-           "health": 1
+           "pos": [ 0.0, 0.0 ],
+           "vel": [ 0.0, 0.0 ],
+           "angle": 0.0,
+           "health": 1.0,
+           "radius": 0.1
          },
          "enemies": [
            {
              "type": "identifier",
-             "pos": [ 0, 0 ],
-             "vel": [ 0, 0 ],
-             "angle": 0,
-             "health": 1
+             "pos": [ 0.0, 0.0 ],
+             "vel": [ 0.0, 0.0 ],
+             "angle": 0.0,
+             "health": 1.0,
+             "radius": 0.1
            }
          ],
          "tileTypes": {

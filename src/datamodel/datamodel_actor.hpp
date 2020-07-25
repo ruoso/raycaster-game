@@ -14,6 +14,7 @@ namespace raycaster {
       commontypes::speed2d speed = commontypes::speed2d(0.0, 0.0);
       double angle = 0;
       double health = 0;
+      double radius = 0;
     };
 
     struct Actor {
