@@ -24,8 +24,13 @@ showing how you are supposed to manipulate those immutable values.
 
 ### gameloader
 
-This will hold the implementation of logic to load and store game
-level data into json.
+This holds the implementation of logic to load game level data from
+json.
+
+### toy2-load-json
+
+This is a simple executable that exercises the loading of a game level
+from json.
 
 ### math
 
