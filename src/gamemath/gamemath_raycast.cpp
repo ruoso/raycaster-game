@@ -50,6 +50,9 @@ namespace raycaster {
           
           if (d.value < radius) {
             // enemy collision in point c
+            raycast_hit_type rht(a);
+            raycast_hit rh(c, rht);
+            ret.push_back(rh);
           }
         }
       }
@@ -65,8 +68,9 @@ namespace raycaster {
       int start_tile_y = int(start.y.value);
       int end_tile_x = int(end.x.value);
       int end_tile_y = int(end.y.value);
-      int max_x = state.data->x_size + 1;
-      int max_y = state.data->y_size + 1;
+      const std::shared_ptr<const datamodel::GameStateData> stateData = state.data;
+      int max_x = stateData->x_size + 1;
+      int max_y = stateData->y_size + 1;
 
       int curr_tile_x = start_tile_x;
       int curr_tile_y = start_tile_y;
@@ -78,7 +82,7 @@ namespace raycaster {
       datamodel::units::angle angle(std::atan2(delta_y, delta_x));
 
       std::vector<datamodel::Actor> candidate_enemies;
-      for ( const datamodel::Actor& a : state.data->enemies ) {
+      for ( const datamodel::Actor& a : stateData->enemies ) {
         const std::shared_ptr<const datamodel::ActorData> data = a.data;
         const datamodel::commontypes::position2d& pos = data->pos;
         double radius = data->radius;
@@ -151,18 +155,32 @@ namespace raycaster {
         int next_tile_y = int(next_y);
 
         const datamodel::Tile curr_tile = state.tile_at(curr_tile_x, curr_tile_y);
-        uint8_t curr_wall = curr_tile.data->current_state->data->wall_collision_map;
+        const std::shared_ptr<const datamodel::TileData> curr_tile_data = curr_tile.data;
+        const std::shared_ptr<const datamodel::TileTypeStateData> curr_tile_state_data = curr_tile_data->current_state->data;
+
+        uint8_t curr_wall = curr_tile_state_data->wall_collision_map;
         const datamodel::Tile next_tile = state.tile_at(next_tile_x, next_tile_y);
-        uint8_t next_wall = next_tile.data->current_state->data->wall_collision_map;
+        const std::shared_ptr<const datamodel::TileData> next_tile_data = next_tile.data;
+        const std::shared_ptr<const datamodel::TileTypeStateData> next_tile_state_data = next_tile_data->current_state->data;
+        
+        uint8_t next_wall = next_tile_state_data->wall_collision_map;
 
         if (next_tile_x > curr_tile_x) {
           if (curr_wall & datamodel::WALL_COLLIDE_EAST) {
             // collision
+            raycast_hit_wall rhw(curr_tile, datamodel::WALL_COLLIDE_EAST);
+            raycast_hit_type rht(rhw);
+            raycast_hit rh(datamodel::commontypes::position2d(next_x, next_y), rht);
+            ret.push_back(rh);
             if (++wall_hits >= max_wall_hits)
               break;
           }
           if (next_wall & datamodel::WALL_COLLIDE_WEST) {
             // collision
+            raycast_hit_wall rhw(next_tile, datamodel::WALL_COLLIDE_WEST);
+            raycast_hit_type rht(rhw);
+            raycast_hit rh(datamodel::commontypes::position2d(next_x, next_y), rht);
+            ret.push_back(rh);
             if (++wall_hits >= max_wall_hits)
               break;
           }
@@ -170,11 +188,19 @@ namespace raycaster {
         } else if (next_tile_x < curr_tile_x) {
           if (curr_wall & datamodel::WALL_COLLIDE_WEST) {
             // collision
+            raycast_hit_wall rhw(curr_tile, datamodel::WALL_COLLIDE_WEST);
+            raycast_hit_type rht(rhw);
+            raycast_hit rh(datamodel::commontypes::position2d(next_x, next_y), rht);
+            ret.push_back(rh);
             if (++wall_hits >= max_wall_hits)
               break;
           }
           if (next_wall & datamodel::WALL_COLLIDE_EAST) {
             // collision
+            raycast_hit_wall rhw(next_tile, datamodel::WALL_COLLIDE_EAST);
+            raycast_hit_type rht(rhw);
+            raycast_hit rh(datamodel::commontypes::position2d(next_x, next_y), rht);
+            ret.push_back(rh);
             if (++wall_hits >= max_wall_hits)
               break;
           }
@@ -184,11 +210,19 @@ namespace raycaster {
         if (next_tile_y > curr_tile_y) {
           if (curr_wall & datamodel::WALL_COLLIDE_NORTH) {
             // collision
+            raycast_hit_wall rhw(curr_tile, datamodel::WALL_COLLIDE_NORTH);
+            raycast_hit_type rht(rhw);
+            raycast_hit rh(datamodel::commontypes::position2d(next_x, next_y), rht);
+            ret.push_back(rh);
             if (++wall_hits >= max_wall_hits)
               break;
           }
           if (next_wall & datamodel::WALL_COLLIDE_SOUTH) {
             // collision
+            raycast_hit_wall rhw(next_tile, datamodel::WALL_COLLIDE_SOUTH);
+            raycast_hit_type rht(rhw);
+            raycast_hit rh(datamodel::commontypes::position2d(next_x, next_y), rht);
+            ret.push_back(rh);
             if (++wall_hits >= max_wall_hits)
               break;
           }
@@ -196,11 +230,19 @@ namespace raycaster {
         } else if (next_tile_y < curr_tile_y) {
           if (curr_wall & datamodel::WALL_COLLIDE_SOUTH) {
             // collision
+            raycast_hit_wall rhw(curr_tile, datamodel::WALL_COLLIDE_SOUTH);
+            raycast_hit_type rht(rhw);
+            raycast_hit rh(datamodel::commontypes::position2d(next_x, next_y), rht);
+            ret.push_back(rh);
             if (++wall_hits >= max_wall_hits)
               break;
           }
           if (next_wall & datamodel::WALL_COLLIDE_NORTH) {
             // collision
+            raycast_hit_wall rhw(next_tile, datamodel::WALL_COLLIDE_NORTH);
+            raycast_hit_type rht(rhw);
+            raycast_hit rh(datamodel::commontypes::position2d(next_x, next_y), rht);
+            ret.push_back(rh);
             if (++wall_hits >= max_wall_hits)
               break;
           }

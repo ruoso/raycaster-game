@@ -31,8 +31,7 @@ namespace raycaster {
     raycast_hits raycast(const datamodel::commontypes::position2d& start,
                          const datamodel::commontypes::position2d& end,
                          const datamodel::GameState& state,
-                         const int& max_wall_hits,
-                         const int& max_enemy_hits);
+                         const int& max_wall_hits);
   }
 }
 
