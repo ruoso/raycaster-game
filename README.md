@@ -32,7 +32,7 @@ json.
 This is a simple executable that exercises the loading of a game level
 from json.
 
-### math
+### gamemath
 
 This will contain calculation functions without side-effects that will
 be used by the game.
@@ -55,3 +55,7 @@ This is the part that renders the game during the level gameplay.
 ### ui
 
 This is the part between levels, such as title screen, pause screen, etc.
+
+### main
+
+This is where the main game will be.
