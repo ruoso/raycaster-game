@@ -12,12 +12,11 @@ namespace raycaster {
     distance_between_positions(datamodel::commontypes::position2d a,
                                datamodel::commontypes::position2d b);
 
-    // returns the distance between position and a line, defined by two points
+    // returns the distance between position and a line segment, defined by two points
     datamodel::units::distance
-    distance_between_position_and_line(datamodel::commontypes::position2d pos,
-                                       datamodel::commontypes::position2d line_a,
-                                       datamodel::commontypes::position2d line_b);
-
+    distance_between_position_and_line_segment(datamodel::commontypes::position2d pos,
+                                               datamodel::commontypes::position2d line_a,
+                                               datamodel::commontypes::position2d line_b);
   }
 }
 
