@@ -8,6 +8,11 @@
 namespace raycaster {
   namespace datamodel {
 
+    const uint8_t WALL_COLLIDE_NORTH = 8;
+    const uint8_t WALL_COLLIDE_SOUTH = 4;
+    const uint8_t WALL_COLLIDE_EAST  = 2;
+    const uint8_t WALL_COLLIDE_WEST  = 1;
+    
     struct TileTypeStateData {
       std::string name;
       uint8_t wall_collision_map;

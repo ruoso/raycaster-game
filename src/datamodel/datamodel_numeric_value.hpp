@@ -16,28 +16,20 @@ namespace raycaster {
       numeric_value(const C& v) :value(v.value) {}
       void operator=(const C& v) { value = v; }
       
-      numeric_value operator + (C v) { return numeric_value( value + v.value); }
-      numeric_value operator - (C v) { return numeric_value( value - v.value); }
-      
-      void operator += (C v) { value += v.value; }
-      void operator -= (C v) { value -= v.value; }
-      
-      C operator ++ () { return ++value; }
-      C operator -- () { return --value;}
-      C operator ++ (int v) { return value++; }
-      C operator -- (int v) { return value--; }
-      
+      numeric_value operator + (C v) const { return numeric_value( value + v.value); }
+      numeric_value operator - (C v) const { return numeric_value( value - v.value); }
+     
       // avoid rounding errors when comparing
-      bool operator == (C v) {
+      bool operator == (C v) const {
         return
-          std::fabs(value - v.value) <= std::numeric_limits<double>::epsilon() * std::fabs(value + v.value) * std::numeric_limits<double>::round_error
+          std::fabs(value - v.value) <= std::numeric_limits<double>::epsilon() * std::fabs(value + v.value) * std::numeric_limits<double>::round_error()
           || std::fabs(value - v.value) < std::numeric_limits<double>::min();
       }
-      bool operator != (C v) { return !(this == v); }
-      bool operator > (C v) { return value > v.value; }
-      bool operator < (C v) { return value < v.value; }
-      bool operator >= (C v) { return value >= v.value; }
-      bool operator <= (C v) { return value <= v.value; }        
+      bool operator != (C v) const { return !(this == v); }
+      bool operator > (C v) const { return value > v.value; }
+      bool operator < (C v) const { return value < v.value; }
+      bool operator >= (C v) const { return value >= v.value; }
+      bool operator <= (C v) const { return value <= v.value; }        
     };
 
   }

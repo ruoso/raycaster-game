@@ -18,6 +18,11 @@ namespace raycaster {
       class acceleration;
       class force;
       
+      class angle: public numeric_value<angle> {
+      public:
+        using numeric_value<angle>::numeric_value;
+      };
+
       class distance: public numeric_value<distance> {
       public:
         using numeric_value<distance>::numeric_value;
