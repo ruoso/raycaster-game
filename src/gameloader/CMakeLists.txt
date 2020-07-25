@@ -6,5 +6,5 @@ add_library(
   
   )
 
-target_link_libraries( gameloader PRIVATE nlohmann_json::nlohmann_json )
+target_link_libraries( gameloader PRIVATE datamodel nlohmann_json::nlohmann_json )
 target_include_directories( gameloader PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} )

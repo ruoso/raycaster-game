@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
     }
   }
 
-  int x_size, y_size;
+  unsigned int x_size, y_size;
   std::cin >> x_size;
   std::cin >> y_size;
   std::vector<datamodel::Tile> tileset;

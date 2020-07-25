@@ -14,8 +14,8 @@ namespace raycaster {
     struct GameStateData {
       Actor player;
       std::vector<Actor> enemies;
-      int x_size;
-      int y_size;
+      unsigned int x_size;
+      unsigned int y_size;
       std::vector<Tile> tileset;
     };
       

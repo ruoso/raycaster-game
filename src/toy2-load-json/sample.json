@@ -1,0 +1,38 @@
+{
+    "player": {
+        "type": "identifier",
+        "pos": [ 0.0, 0.0 ],
+        "vel": [ 0.0, 0.0 ],
+        "angle": 0.0,
+        "health": 1.0
+    },
+    "enemies": [
+        {
+            "type": "identifier",
+            "pos": [ 0.0, 0.0 ],
+            "vel": [ 0.0, 0.0 ],
+            "angle": 0.0,
+            "health": 1.0
+        }
+    ],
+    "tileTypes": {
+        "dirt": {
+            "default": 0
+        },
+        "dirt_1000": {
+            "default": 8
+        },
+        "door_1000": {
+            "closed": 8,
+            "open": 0
+        }
+    },
+    "tileSet": {
+        "x_size": 2,
+        "y_size": 2,
+        "map": [
+            [ "dirt", "default", 0 ],     [ "dirt", "default", 0 ],
+            [ "dirt_1000", "default", 0 ], [ "door_1000", "closed", 0 ]
+        ]
+    }
+}

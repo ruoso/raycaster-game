@@ -9,11 +9,9 @@ namespace raycaster {
   namespace datamodel {
 
     struct ActorData {
-      commontypes::position pos = commontypes::position(0.0, 0.0);
-      units::speed speed_x = units::speed(0.0);
-      units::speed speed_y = units::speed(0.0);
-      units::acceleration acc_x = units::acceleration(0.0);
-      units::acceleration acc_y = units::acceleration(0.0);
+      std::string type;
+      commontypes::position2d pos = commontypes::position2d(0.0, 0.0);
+      commontypes::speed2d speed = commontypes::speed2d(0.0, 0.0);
       double angle = 0;
       double health = 0;
     };
