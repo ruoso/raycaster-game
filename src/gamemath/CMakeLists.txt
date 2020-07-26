@@ -10,4 +10,5 @@ add_library(
   
   )
 
+target_include_directories( gamemath PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} )
 target_link_libraries( gamemath PRIVATE datamodel )

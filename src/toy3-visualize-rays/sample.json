@@ -1,0 +1,81 @@
+{
+    "player": {
+        "type": "identifier",
+        "pos": [ 0.5, 0.5 ],
+        "vel": [ 0.0, 0.0 ],
+        "angle": 0.0,
+        "health": 1.0,
+        "radius": 0.1
+    },
+    "enemies": [
+        {
+            "type": "identifier",
+            "pos": [ 3.0, 3.0 ],
+            "vel": [ 0.0, 0.0 ],
+            "angle": 0.0,
+            "health": 1.0,
+            "radius": 0.1
+        }
+    ],
+    "tileTypes": {
+        "dirt_0000": {
+            "default": 0
+        },
+        "dirt_0001": {
+            "default": 1
+        },
+        "dirt_0010": {
+            "default": 2
+        },
+        "dirt_0011": {
+            "default": 3
+        },
+        "dirt_0100": {
+            "default": 4
+        },
+        "dirt_0101": {
+            "default": 5
+        },
+        "dirt_0110": {
+            "default": 6
+        },
+        "dirt_0111": {
+            "default": 7
+        },
+        "dirt_1000": {
+            "default": 8
+        },
+        "dirt_1001": {
+            "default": 9
+        },
+        "dirt_1010": {
+            "default": 10
+        },
+        "dirt_1011": {
+            "default": 11
+        },
+        "dirt_1100": {
+            "default": 12
+        },
+        "dirt_1101": {
+            "default": 13
+        },
+        "dirt_1110": {
+            "default": 14
+        },
+        "dirt_1111": {
+            "default": 15
+        }
+    },
+    "tileSet": {
+        "x_size": 5,
+        "y_size": 5,
+        "map": [
+            [ "dirt_0101", "default", 0 ], [ "dirt_0011", "default", 0 ], [ "dirt_0100", "default", 0 ], [ "dirt_0100", "default", 0 ], [ "dirt_0110", "default", 0 ],
+            [ "dirt_0001", "default", 0 ], [ "dirt_0111", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0010", "default", 0 ],
+            [ "dirt_0001", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0010", "default", 0 ],
+            [ "dirt_0001", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0010", "default", 0 ],
+            [ "dirt_1001", "default", 0 ], [ "dirt_1000", "default", 0 ], [ "dirt_1000", "default", 0 ], [ "dirt_1000", "default", 0 ], [ "dirt_1010", "default", 0 ] 
+        ]
+    }
+}

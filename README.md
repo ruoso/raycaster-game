@@ -37,6 +37,12 @@ from json.
 This will contain calculation functions without side-effects that will
 be used by the game.
 
+### toy3-visualize-rays
+
+Executable that loads a level, and prints out the collision of 360
+rays coming out of the player in all directions, showing all the
+collision points.
+
 ### mechanics
 
 This will contain the evaluation function that takes a game state and
