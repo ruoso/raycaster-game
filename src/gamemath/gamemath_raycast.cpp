@@ -61,10 +61,12 @@ namespace raycaster {
             raycast_hit rh(c, rht);
             ret.push_back(rh);
             a_it = candidate_enemies.erase(a_it);
-            continue;
+          } else {
+            ++a_it;
           }
+        } else {
+          ++a_it;
         }
-        ++a_it;
       }
       
     }
