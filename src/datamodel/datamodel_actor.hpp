@@ -9,6 +9,7 @@ namespace raycaster {
   namespace datamodel {
 
     struct ActorData {
+      int id;
       std::string type;
       commontypes::position2d pos = commontypes::position2d(0.0, 0.0);
       commontypes::speed2d speed = commontypes::speed2d(0.0, 0.0);
@@ -21,6 +22,12 @@ namespace raycaster {
       const std::shared_ptr<const ActorData> data;
       Actor(const ActorData& data_in) :data(std::make_shared<ActorData>(data_in)) {}
       Actor(const Actor& a) :data(a.data) {}
+      bool operator < (const Actor& a) const {
+        return data->id < a.data->id;
+      }
+      bool operator == (const Actor& a) const {
+        return data->id == a.data->id;
+      }
     };
 
   }

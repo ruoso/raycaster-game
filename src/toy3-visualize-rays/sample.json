@@ -1,5 +1,6 @@
 {
     "player": {
+        "id": 0,
         "type": "identifier",
         "pos": [ 0.5, 0.5 ],
         "vel": [ 0.0, 0.0 ],
@@ -9,6 +10,7 @@
     },
     "enemies": [
         {
+            "id": 1,
             "type": "identifier",
             "pos": [ 3.0, 3.0 ],
             "vel": [ 0.0, 0.0 ],

@@ -12,6 +12,12 @@ namespace raycaster {
           throw InvalidJsonException("Actor must be an object");
         }
 
+        auto j_id_it = j.find("id");
+        if (j_id_it == j.end() || !j_id_it->is_number_integer()) {
+          throw InvalidJsonException("No type id in actor");
+        }
+        int id = j_id_it->get<int>();
+
         auto j_type_it = j.find("type");
         if (j_type_it == j.end() || !j_type_it->is_string()) {
           throw InvalidJsonException("No type field in actor");
@@ -56,7 +62,8 @@ namespace raycaster {
         }
         double radius = j_radius_it->get<double>();
 
-        return datamodel::Actor({ type,
+        return datamodel::Actor({ id,
+                                  type,
                                   datamodel::commontypes::position2d(pos_x, pos_y),
                                   datamodel::commontypes::speed2d(vel_x, vel_y),
                                   angle,

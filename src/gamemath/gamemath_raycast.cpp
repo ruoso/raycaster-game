@@ -1,6 +1,7 @@
 #include "gamemath_raycast.hpp"
 #include "gamemath_distances.hpp"
 
+#include <set>
 #include <iostream>
 
 namespace raycaster {
@@ -34,11 +35,12 @@ namespace raycaster {
     }
     
     static void
-    check_enemy_collision(const std::vector<datamodel::Actor>& candidate_enemies,
+    check_enemy_collision(std::set<datamodel::Actor>& candidate_enemies,
                           double curr_x, double curr_y,
                           double next_x, double next_y,
                           raycast_hits& ret) {
-      for ( const datamodel::Actor& a : candidate_enemies ) {
+      for ( auto a_it = candidate_enemies.begin(); a_it != candidate_enemies.end();) {
+        const datamodel::Actor& a = *a_it;
         const std::shared_ptr<const datamodel::ActorData> data = a.data;
         const datamodel::commontypes::position2d& pos = data->pos;
         double radius = data->radius;
@@ -58,9 +60,13 @@ namespace raycaster {
             raycast_hit_type rht(a);
             raycast_hit rh(c, rht);
             ret.push_back(rh);
+            a_it = candidate_enemies.erase(a_it);
+            continue;
           }
         }
+        ++a_it;
       }
+      
     }
 
     raycast_hits raycast(const datamodel::commontypes::position2d& start,
@@ -93,7 +99,7 @@ namespace raycaster {
       }
       datamodel::units::angle angle(angle_v);
 
-      std::vector<datamodel::Actor> candidate_enemies;
+      std::set<datamodel::Actor> candidate_enemies;
       for ( const datamodel::Actor& a : stateData->enemies ) {
         const std::shared_ptr<const datamodel::ActorData> data = a.data;
         const datamodel::commontypes::position2d& pos = data->pos;
@@ -102,7 +108,7 @@ namespace raycaster {
              pos.x - radius <= std::max(start.x.value, end.x.value) &&
              pos.y + radius >= std::min(start.y.value, end.y.value) &&
              pos.y - radius <= std::max(start.y.value, end.y.value)) {
-          candidate_enemies.push_back(a);
+          candidate_enemies.insert(a);
         }
       }
       
