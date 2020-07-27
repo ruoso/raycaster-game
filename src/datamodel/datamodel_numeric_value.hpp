@@ -14,6 +14,8 @@ namespace raycaster {
       double value;
       numeric_value(double v) :value(v) {}
       numeric_value(const C& v) :value(v.value) {}
+      numeric_value(const numeric_value<C>& v) :value(v.value) {}
+
       void operator=(const C& v) { value = v; }
       
       numeric_value operator + (C v) const { return numeric_value( value + v.value); }
@@ -25,11 +27,15 @@ namespace raycaster {
           std::fabs(value - v.value) <= std::numeric_limits<double>::epsilon() * std::fabs(value + v.value) * std::numeric_limits<double>::round_error()
           || std::fabs(value - v.value) < std::numeric_limits<double>::min();
       }
-      bool operator != (C v) const { return !(this == v); }
-      bool operator > (C v) const { return value > v.value; }
-      bool operator < (C v) const { return value < v.value; }
-      bool operator >= (C v) const { return value >= v.value; }
-      bool operator <= (C v) const { return value <= v.value; }        
+
+      operator C () { return C(value); }
+      
+      bool operator != (const C v) const { return !(this == v); }
+      bool operator > (const C v) const { return value > v.value; }
+      bool operator < (const C v) const { return value < v.value; }
+      bool operator >= (const C v) const { return value >= v.value; }
+      bool operator <= (const C v) const { return value <= v.value; }        
+
     };
 
   }

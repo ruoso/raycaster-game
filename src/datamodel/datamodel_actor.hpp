@@ -13,7 +13,7 @@ namespace raycaster {
       std::string type;
       commontypes::position2d pos = commontypes::position2d(0.0, 0.0);
       commontypes::speed2d speed = commontypes::speed2d(0.0, 0.0);
-      double angle = 0;
+      units::angle angle = 0;
       double health = 0;
       double radius = 0;
     };

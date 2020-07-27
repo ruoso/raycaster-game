@@ -14,6 +14,8 @@ if(NOT json_POPULATED)
   add_subdirectory(${json_SOURCE_DIR} ${json_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
+find_package(SDL2 REQUIRED)
+
 add_compile_options( -Wall -Werror )
 
 add_subdirectory(src)

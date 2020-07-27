@@ -3,6 +3,7 @@
 
 #include <set>
 #include <iostream>
+#include <cassert>
 
 namespace raycaster {
   namespace gamemath {
@@ -16,6 +17,8 @@ namespace raycaster {
     
     static std::tuple<double, double>
     rotated_hit_point(double angle_v, double max_0deg, double max_90deg) {
+      assert( max_0deg > 0);
+      assert( max_90deg > 0);
       double offset_90deg = std::tan(angle_v) * max_0deg;
       double hit_0deg, hit_90deg;
       if (max_0deg < 0 || max_90deg < 0) {
@@ -23,13 +26,13 @@ namespace raycaster {
       }
       if (offset_90deg <= max_90deg) {
         // the triangle fits with the 0-degrees distance
-        hit_0deg = std::nexttoward(max_0deg, max_0deg + 1);
+        hit_0deg = max_0deg;
         hit_90deg = offset_90deg;
       } else {
         // the triangle doesn't fit when we use the max_0deg distance,
         // so let's do it with the max_90deg distance instead
         hit_0deg = max_90deg / std::tan(angle_v);
-        hit_90deg = std::nexttoward(max_90deg, max_90deg + 1);
+        hit_90deg = max_90deg;
       }
       return std::tuple<double,double>(hit_0deg, hit_90deg);
     }
@@ -140,32 +143,32 @@ namespace raycaster {
               rotated_hit_point(angle.value,
                                 curr_tile_x + 1 - curr_x,
                                 curr_tile_y + 1 - curr_y);
-            next_x = curr_x + std::get<0>(hits);
-            next_y = curr_y + std::get<1>(hits);
+            next_x = std::nexttoward(curr_x + std::get<0>(hits), curr_x + 1);
+            next_y = std::nexttoward(curr_y + std::get<1>(hits), curr_y + 1);
 
           } else if (angle < deg180) {
             std::tuple<double, double> hits =
               rotated_hit_point(angle.value - deg90.value,
                                 curr_tile_y + 1 - curr_y,
                                 curr_x - curr_tile_x);
-            next_y = curr_y + std::get<0>(hits);
-            next_x = curr_x - std::get<1>(hits);
+            next_y = std::nexttoward(curr_y + std::get<0>(hits), curr_y + 1);
+            next_x = std::nexttoward(curr_x - std::get<1>(hits), curr_x - 1);
 
           } else if (angle < deg270) {
             std::tuple<double, double> hits =
               rotated_hit_point(angle.value - deg180.value,
                                 curr_x - curr_tile_x,
                                 curr_y - curr_tile_y);
-            next_x = curr_x - std::get<0>(hits);
-            next_y = curr_y - std::get<1>(hits);
+            next_x = std::nexttoward(curr_x - std::get<0>(hits), curr_x - 1);
+            next_y = std::nexttoward(curr_y - std::get<1>(hits), curr_y - 1);
 
           } else {
             std::tuple<double, double> hits =
               rotated_hit_point(angle.value - deg270.value,
                                 curr_y - curr_tile_y,
                                 curr_tile_x + 1 - curr_x );
-            next_y = curr_y - std::get<0>(hits);
-            next_x = curr_x + std::get<1>(hits);
+            next_y = std::nexttoward(curr_y - std::get<0>(hits), curr_y - 1);
+            next_x = std::nexttoward(curr_x + std::get<1>(hits), curr_x + 1);
 
           }
         }

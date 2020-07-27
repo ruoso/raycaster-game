@@ -74,7 +74,7 @@
         "y_size": 5,
         "map": [
             [ "dirt_0101", "default", 0 ], [ "dirt_0011", "default", 0 ], [ "dirt_0100", "default", 0 ], [ "dirt_0100", "default", 0 ], [ "dirt_0110", "default", 0 ],
-            [ "dirt_0001", "default", 0 ], [ "dirt_0111", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0010", "default", 0 ],
+            [ "dirt_0001", "default", 0 ], [ "dirt_1011", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0010", "default", 0 ],
             [ "dirt_0001", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0010", "default", 0 ],
             [ "dirt_0001", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0000", "default", 0 ], [ "dirt_0010", "default", 0 ],
             [ "dirt_1001", "default", 0 ], [ "dirt_1000", "default", 0 ], [ "dirt_1000", "default", 0 ], [ "dirt_1000", "default", 0 ], [ "dirt_1010", "default", 0 ] 

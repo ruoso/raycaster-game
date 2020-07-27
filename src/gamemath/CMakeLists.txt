@@ -3,6 +3,8 @@ add_library(
 
   OBJECT
 
+  gamemath_camera2d.hpp
+  gamemath_camera2d.cpp
   gamemath_distances.hpp
   gamemath_distances.cpp
   gamemath_raycast.hpp
