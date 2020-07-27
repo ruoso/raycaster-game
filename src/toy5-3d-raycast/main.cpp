@@ -68,7 +68,7 @@ int main(int argc, const char** argv) {
   datamodel::GameLevel gl = gameloader::JSON::load_game_level_from_json(str);
   datamodel::GameRun gameRun(gl);
 
-  gamemath::Camera3D camera(std::acos(-1)/2, std::acos(-1)/2, 1, 0.4, SCREEN_WIDTH, SCREEN_HEIGHT);
+  gamemath::Camera3D camera(std::acos(-1)/3, std::acos(-1)/3, 1, 0.4, SCREEN_WIDTH, SCREEN_HEIGHT);
 
   
   //Initialize SDL
