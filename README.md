@@ -43,6 +43,14 @@ Executable that loads a level, and prints out the collision of 360
 rays coming out of the player in all directions, showing all the
 collision points.
 
+### toy4-sdl-rays
+
+Executable with a top-down visualization of the ray casting.
+
+### toy5-3d-raycast
+
+Executable with fpv camera using ray casting.
+
 ### mechanics
 
 This will contain the evaluation function that takes a game state and
