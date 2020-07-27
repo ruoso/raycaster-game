@@ -36,6 +36,9 @@ namespace raycaster {
       bool operator >= (const C v) const { return value >= v.value; }
       bool operator <= (const C v) const { return value <= v.value; }        
 
+      void operator = (const C v) { value = v.value; }
+      void operator += (const C v) { value += v.value; }
+      void operator -= (const C v) { value -= v.value; }
     };
 
   }
